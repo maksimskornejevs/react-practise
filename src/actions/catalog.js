@@ -1,5 +1,5 @@
 import eCommerceApi from "../api/eCommerce";
-import { Query, Field } from '@tilework/opus';
+import { Query } from '@tilework/opus';
 
 import {FETCH_CATEGORIES} from "./types";
 

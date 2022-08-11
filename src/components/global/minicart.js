@@ -32,7 +32,7 @@ class MiniCart extends React.Component {
         if (
             this.miniCartContainerRef.current && 
             !this.miniCartContainerRef.current.contains(event.target) &&
-            this.miniCartContainerRef.current .classList.contains('open')
+            this.miniCartContainerRef.current.classList.contains('open')
 
         ) {
             this.toggleMinicart()

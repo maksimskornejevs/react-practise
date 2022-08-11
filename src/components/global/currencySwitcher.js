@@ -33,7 +33,7 @@ class CurrencySwitcher extends React.Component {
         if (
             this.currencySwitcherRef.current && 
             !this.currencySwitcherRef.current.contains(event.target) &&
-            this.currencySwitcherRef.current .classList.contains('open')
+            this.currencySwitcherRef.current.classList.contains('open')
 
         ) {
             this.toggleDropdown()

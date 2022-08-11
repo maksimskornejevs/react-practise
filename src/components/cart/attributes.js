@@ -2,10 +2,6 @@ import React from 'react';
 
 class CartProductAttributes extends React.Component {
 
-    constructor(props) {
-        super(props);  
-    }
-
     renderProductAttributes = () => {
       const { attributes } = this.props
 
@@ -29,7 +25,7 @@ class CartProductAttributes extends React.Component {
           const {displayValue, value, id} = item
           return (
             <li key={id} className="option">
-              {type == 'swatch' ? (
+              {type === 'swatch' ? (
                 <label className={`swatch-label ${this.getAttributeItemStatus(attributeId, value)}`}>
                   <span className={"color-swatch"} style={{backgroundColor: value}}></span>
                 </label>

@@ -7,7 +7,7 @@ let defaultState = {
 export const catalogReducer = (state = defaultState, action) => {
     switch (action.type) {
         case FETCH_CATEGORIES:
-            if(state.currentCategory == '') {
+            if(state.currentCategory === '') {
                 const defaultCurrentCategory = action.payload[0]
                 return {...state, categories: action.payload, currentCategory: defaultCurrentCategory};
             }
