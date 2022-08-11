@@ -1,0 +1,83 @@
+.pdp {
+  display: flex;
+  padding: 70px 0 0 0;
+}
+
+.pdp .image-gallery {
+  width: 700px;
+}
+
+.pdp .product-details {
+  width: 550px;
+  padding: 0 0 0 120px;
+}
+
+.product-attributes {
+  margin: 20px 0 20px 0;
+}
+
+.product-attributes .attribute .product-attribute-options .options-list {
+  list-style: none;
+  padding: 0 0 0 0;
+  margin: 0 0 0 0;
+  display: flex;
+}
+
+.product-attributes .attribute .product-attribute-options .options-list .option {
+  margin-right: 15px;
+  display: flex;
+}
+.product-attributes .attribute .product-attribute-options .options-list .option input {
+  visibility:hidden;
+  width: 0;
+  margin: 0 0 0 0;
+}
+.product-attributes .attribute .product-attribute-options .options-list .option label {
+  cursor: pointer;
+  margin: 0 0 0 0;
+}
+.product-attributes .attribute .product-attribute-options .options-list .option label.text-label {
+  border: 2px solid black;
+  padding: 10px 10px 10px 10px;
+}
+.product-attributes .attribute .product-attribute-options .options-list .option label.swatch-label {
+  border: 2px solid transparent;
+}
+.product-attributes .attribute .product-attribute-options .options-list .option label .color-swatch {
+  width: 30px;
+  height: 30px;
+  display: block;
+}
+.product-attributes .attribute .product-attribute-options .options-list .option .text-label.selected, 
+.product-attributes .attribute .product-attribute-options .options-list .option input:checked + .text-label {
+  background-color: #000000;
+  color: #ffffff;
+}
+.product-attributes .attribute .product-attribute-options .options-list .option .swatch-label.selected,
+.product-attributes .attribute .product-attribute-options .options-list .option input:checked + .swatch-label {
+  border: 2px solid #60ffc0;
+}
+
+.pdp .product-details .product-actions {
+  margin: 20px 0 20px 0;
+}
+
+.pdp .product-details .product-actions .action.to-cart .btn {
+  background: #66d63d;
+  width: 250px;
+  height: 50px;
+  border: none;
+  cursor: pointer;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 17px;
+  text-transform: uppercase;
+}
+
+.pdp .product-details .product-actions .action.to-cart .btn:disabled {
+  background: #8e8e8e;
+}
+
+.dropdown { 
+  
+}
