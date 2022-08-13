@@ -37,7 +37,7 @@ class ProductListingPage extends Component {
 
       try {
         const categoryFields = ['name'];
-        const productFields = ['id', 'name', 'gallery', 'inStock'];
+        const productFields = ['id', 'name', 'brand', 'gallery', 'inStock'];
         const priceFields = ['amount'];
         const currencyFields = ['label'];
 
@@ -88,7 +88,7 @@ class ProductListingPage extends Component {
   renderProductGrid = (categoryName, products) => {
     return (
       <div className='product-grid'>
-          {products.map( ({id, inStock, name, gallery, prices}) => {
+          {products.map( ({id, inStock, name, brand, gallery, prices}) => {
               return (
                 <div key={id} className="product-grid-item">
                   <Link to={`/${categoryName}/${id}`}>
@@ -99,7 +99,7 @@ class ProductListingPage extends Component {
                     <div className='product-details'>
                       
                       <p className='product-name'>
-                        {name}
+                        {`${brand} ${name}`}
                       </p>
                       <div className='product-prices'>
                         <ProductPrice prices={prices} />
