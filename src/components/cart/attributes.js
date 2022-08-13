@@ -41,12 +41,12 @@ class CartProductAttributes extends React.Component {
         const { selectedAttributes } = this.props
         let isSelected = false
 
-        selectedAttributes.some(selectedAttribute => {
+        for (const selectedAttribute of selectedAttributes) {
           if(selectedAttribute.id === attributeId && selectedAttribute.value === value) {
             isSelected = true
-            return false
+            break
           }
-        })
+        }
 
         return isSelected ? 'selected' : ''
       }

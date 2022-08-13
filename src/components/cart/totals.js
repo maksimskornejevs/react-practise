@@ -15,7 +15,7 @@ class CartTotals extends React.Component {
     renderMinimalTotal = (cartItems, currency, currencySymbol) => {
       let total = 0;
 
-      cartItems.map(item => {
+      for (const item of cartItems) {
         const { prices } = item.product
         const priceIndex = prices.findIndex(price => price.currency.label === currency)
 
@@ -23,7 +23,7 @@ class CartTotals extends React.Component {
           const { amount } = prices[priceIndex]
           total += amount * item.qty
         }
-      })
+      }
       
 
       return (
@@ -38,7 +38,7 @@ class CartTotals extends React.Component {
       let totalQty = 0
       let total = 0
 
-      cartItems.map(item => {
+      for (const item of cartItems) {
         const { prices } = item.product
         const { qty } = item
         const priceIndex = prices.findIndex(price => price.currency.label === currency)
@@ -50,7 +50,7 @@ class CartTotals extends React.Component {
         }
 
         totalQty += qty
-      })
+      }
       
 
       return (
