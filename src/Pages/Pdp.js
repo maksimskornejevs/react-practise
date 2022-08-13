@@ -16,6 +16,7 @@ class ProductDetailsPage extends React.Component {
 
     this.state = { 
       product: {},
+      productToBefetched: '',
       selectedAttributes: []
     }
 
@@ -49,7 +50,8 @@ class ProductDetailsPage extends React.Component {
       const response = await eCommerceApi.post(productQuery);
       
       this.setState({
-        product: 'product' in response ? response.product : false
+        product: 'product' in response ? response.product : false,
+        productToBefetched: ''
       });
 
 
@@ -62,7 +64,7 @@ class ProductDetailsPage extends React.Component {
     }
   }
 
-  componentDidUpdate = () => {
+  componentDidUpdate = () => {    
     this.triggerProductFetch()
   }
 
@@ -71,10 +73,13 @@ class ProductDetailsPage extends React.Component {
   }
 
   triggerProductFetch = () => {
-    const { product } = this.state
+    const { productToBefetched, product } = this.state
     const { productId } = this.props.params
 
-    if(product !== false && product !== null && !('id' in product)) {
+    if(!productToBefetched && !('id' in product)) {
+      this.setState({
+        productToBefetched: productId
+      });
       this.fetchProductData(productId)
     }
   }
