@@ -7,6 +7,9 @@ let defaultState = {
     items: storedCart && storedCart.items ? storedCart.items : []
 }
 
+console.log(storedCart)
+console.log(defaultState)
+
 export const cartReducer = (state = defaultState, action) => {
     
     switch (action.type) {
@@ -39,9 +42,11 @@ export const cartReducer = (state = defaultState, action) => {
                 return newItems;
             }
 
-            localStorage.setItem('items', JSON.stringify(items));
+            const newItems = {...state, items: [ ...state.items ]}
 
-            return {...state, items: [ ...state.items ]};
+            localStorage.setItem('items', JSON.stringify(newItems));
+
+            return newItems;
             
         case UPDATE_PRODUCT_QTY_IN_CART:
             const stockUpdateItem = action.payload.item;

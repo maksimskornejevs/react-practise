@@ -5,6 +5,7 @@ import { Query, Field } from '@tilework/opus';
 import eCommerceApi from "../api/eCommerce";
 import {connect} from "react-redux";
 import withParams from '../components/utils/withParams';
+import { addProductToCart } from "../actions/cart";
 
 class ProductListingPage extends Component {
 
@@ -40,19 +41,26 @@ class ProductListingPage extends Component {
         const productFields = ['id', 'name', 'brand', 'gallery', 'inStock'];
         const priceFields = ['amount'];
         const currencyFields = ['label'];
+        const attributesFields = ['id', 'name', 'type']
+        const attributesItemFields = ['displayValue', 'id', 'value']
 
         const categoryQuery = new Query('category', true)
             .addArgument('input', 'CategoryInput', { title: category})
             .addFieldList(categoryFields)
             .addField(new Field('products', true)
-                .addFieldList(productFields)
-                .addField(new Field('prices', true)
-                    .addFieldList(priceFields)
-                    .addField(new Field('currency', true)
-                        .addFieldList(currencyFields)
+              .addFieldList(productFields)
+              .addField(new Field('prices', true)
+                  .addFieldList(priceFields)
+                  .addField(new Field('currency', true)
+                      .addFieldList(currencyFields)
+                  )
+              )
+              .addField(new Field('attributes', true)
+                  .addFieldList(attributesFields)
+                  .addField(new Field('items', true)
+                      .addFieldList(attributesItemFields)
                     )
-                )
-            )
+              ))
 
           
             
@@ -85,10 +93,37 @@ class ProductListingPage extends Component {
     );
   }
 
+  renderAddtoCartButton = (inStock, product) => {
+    if (inStock) {
+      return (
+        <div className='action'>
+          <button className='btn to-cart' onClick={e => { e.stopPropagation(); e.nativeEvent.stopImmediatePropagation(); this.addToCartAction(product) }} type="button"><span className='icon'></span></button>
+        </div>
+      )
+    }
+  }
+
+  addToCartAction(product) {
+    const { attributes } = product
+    let selectedAttributes = []
+
+    for (const attribute of attributes) {
+      if(attribute.items.length) {
+        selectedAttributes = [...selectedAttributes, { id: attribute.name, value: attribute.items[0].value}]
+      }
+    }
+
+    this.props.addProductToCart({
+      product,
+      selectedAttributes
+    })
+  }
+
   renderProductGrid = (categoryName, products) => {
     return (
       <div className='product-grid'>
-          {products.map( ({id, inStock, name, brand, gallery, prices}) => {
+          {products.map( product => {
+              const {id, inStock, name, brand, gallery, prices} = product
               return (
                 <div key={id} className="product-grid-item">
                   <Link to={`/${categoryName}/${id}`}>
@@ -96,8 +131,7 @@ class ProductListingPage extends Component {
                       
                         <img src={gallery[0]} alt={name}/>
                     </div>
-                    <div className='product-details'>
-                      
+                    <div className='product-details'>  
                       <p className='product-name'>
                         {`${brand} ${name}`}
                       </p>
@@ -109,6 +143,7 @@ class ProductListingPage extends Component {
                       <label className='message'>OUT OF STOCK</label>
                     </div>
                   </Link>
+                  {this.renderAddtoCartButton(inStock, product)}
                 </div>
               )
           })}
@@ -137,4 +172,6 @@ function mapStateToProps(state) {
 }
 
 
-export default connect(mapStateToProps)(withParams(ProductListingPage));
+export default connect(mapStateToProps, {
+  addProductToCart: addProductToCart
+})(withParams(ProductListingPage));

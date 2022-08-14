@@ -72,12 +72,12 @@ class CurrencySwitcher extends React.Component {
 
         return this.state.currencies.map( currency => {
             const { label, symbol } = currency
-            
+
             if(currentCurrency !== label) {
                 return (
                     <li className='currency' key={label} onClick={((e) => this.selectCurrency(e, { label, symbol }))}>
                         <span className='symbol'>{symbol}</span>
-                        <span className='symbol'>{label}</span>
+                        <span className='label'>{label}</span>
                     </li>
                 )
             }

@@ -88,7 +88,7 @@ class ProductDetailsPage extends React.Component {
     return images.map(image => {
       return {
         original: image,
-        thumbnail: image,
+        thumbnail: image
       }
     })
   }
@@ -177,7 +177,7 @@ class ProductDetailsPage extends React.Component {
     return (
       <div className='pdp'>
         <div className='image-gallery'>
-          <ImageGallery items={this.normalizeImageGallery(gallery)} thumbnailPosition="left" disableThumbnailScroll="true" />
+          <ImageGallery items={this.normalizeImageGallery(gallery)} showNav={false} showFullscreenButton={false} showPlayButton={false} thumbnailPosition="left" disableThumbnailScroll="true" />
         </div>
         <div className='product-details'>
           <h3 className='brand'>{brand}</h3>

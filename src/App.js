@@ -9,6 +9,7 @@ import { fetchCategories } from "./actions/catalog";
 import CurrencySwitcher from './components/global/currencySwitcher';
 import MiniCart from './components/global/minicart';
 import withNavigation from './components/utils/withNavigation';
+import logo from './assets/logo.png';
 
 
 class App extends Component {
@@ -67,6 +68,9 @@ class App extends Component {
                         <header>
                             <div className="main-nav">
                                 {this.renderNavigationItems()}
+                                <div className='logo'>
+                                    <img src={logo} alt="Logo" />
+                                </div>
                                 <MiniCart/>
                                 <CurrencySwitcher/>
                             </div>
@@ -83,9 +87,6 @@ class App extends Component {
                             </Routes>
                         </main>
                         <footer>
-                            <div className="copyright">
-                                <p>Copyright © 2022 Maksims Kornejevs. All Rights Reserved</p>
-                            </div>
                         </footer>
             </div>
         </Suspense>

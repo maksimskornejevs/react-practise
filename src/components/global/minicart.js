@@ -119,7 +119,7 @@ class MiniCart extends React.Component {
                 <div className='dropdown-trigger-container' >
                     <div className="minicart-trigger" onClick={this.toggleMinicart}> 
                         <i className="cart-icon"></i>
-                        <span className='cart-items-qty'>{cartTotalQty}</span>
+                        <span className={`cart-items-qty ${cartTotalQty > 0 ? 'visible' : '' }`} >{cartTotalQty}</span>
                     </div>
                 </div>
                 <div className='dropdown-mask' onClick={this.toggleMinicart}></div>

@@ -56,16 +56,16 @@ class CartTotals extends React.Component {
       return (
         <>
           <div className='total'>
-            <span className='label'>Total:</span>
-            <span className='value'>{`${total.toFixed(2)} ${currencySymbol}`}</span>
+            <span className='label'>Tax 21%:</span>
+            <span className='value'>{`${(total * 0.21).toFixed(2)} ${currencySymbol}`}</span>
           </div>
           <div className='total'>
             <span className='label'>Qantity:</span>
             <span className='value'>{totalQty}</span>
           </div>
           <div className='total'>
-            <span className='label'>PVN 21%:</span>
-            <span className='value'>{`${(total * 0.21).toFixed(2)} ${currencySymbol}`}</span>
+            <span className='label'>Total:</span>
+            <span className='value'>{`${total.toFixed(2)} ${currencySymbol}`}</span>
           </div>
         </> 
       )

@@ -19,6 +19,7 @@ class ProductPrice extends React.Component {
 
             return (
                 <div className='price'>
+                    <label className='price-label'>Price:</label>
                     <span className='symbol'>{symbol}</span>
                     <span className='value'>{amount}</span>
                 </div>
