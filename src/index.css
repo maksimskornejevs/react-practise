@@ -378,6 +378,9 @@ code {
   font-size: 18px;
   line-height: 29px;
 }
+.plp .product-grid-item .price-label {
+  display: none;
+}
 
 .plp .product-grid-item .action .to-cart {
   width: 52px;
