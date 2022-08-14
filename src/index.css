@@ -173,6 +173,10 @@ code {
   margin-right: -3px;
 }
 
+.minicart-container .price-label {
+  display: none;
+}
+
 .cart-items-list {
   margin: 0 0 0 0;
 }
@@ -857,15 +861,15 @@ code {
   height: 100%;
 }
 
-.qty-selector .btn {
+.cart .qty-selector .btn {
   width: 45px;
   height: 45px;
 }
 
-.qty-selector .btn.qty-increase-action {
+.cart .qty-selector .btn.qty-increase-action {
   background-image: url(./assets/cart-plus-square.png);
 }
 
-.qty-selector .btn.qty-down-action {
+.cart .qty-selector .btn.qty-down-action {
   background-image: url(./assets/cart-minus-square.png);
 }
